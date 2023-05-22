@@ -1,32 +1,19 @@
-import React, { useState } from "react";
-import "./public/button.css";
+import React, { useState, useEffect } from "react";
+import MyFooter from "./components/footer";
+
 function MyApp() {
   const [count, setCount] = useState(0);
 
-  const increament = () => {
-    if (count === 10) return;
-
-    setCount(count + 1);
-  };
-
-  const decreament = () => {
-    if (count === 0) return;
-    setCount(count - 1);
-  };
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  });
 
   return (
-    <>
-      <div>
-        <button className="Increament" onClick={increament}>
-          increase me
-        </button>
-        <span>{count}</span>
-        <button className="decreament" onClick={decreament}>
-          {" "}
-          decrease me
-        </button>
-      </div>
-    </>
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+      <MyFooter />
+    </div>
   );
 }
 
